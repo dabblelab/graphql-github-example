@@ -9,7 +9,7 @@ This is code for building an application that uses GraphQL to query Github's Top
 
 ## Using this code
 
-1. Watch the tutorial video( upcomming ).
+1. Watch the tutorial [video](https://youtu.be/YxgNZgOKBzQ).
 
 2. Click the 'Run on Replit.com' button below to copy this code to your Replit.com account.
 
