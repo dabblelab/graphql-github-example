@@ -3,8 +3,9 @@ const app = express()
 const { ApolloClient, InMemoryCache, HttpLink, gql } = require('@apollo/client');
 const fetch = require('node-fetch');
 
-const cache = new InMemoryCache();
+//Fill in the GraphQL endpoint and your Github Secret Access Token inside secrets.
 
+const cache = new InMemoryCache();
 const client = new ApolloClient({
   link: new HttpLink({
     uri: process.env['GRAPHQL_ENDPOINT'], fetch, headers: {
@@ -14,7 +15,7 @@ const client = new ApolloClient({
   cache
 });
 
-app.get('/', (req, res) =>
+app.get('/', function(req, res) {
   client
     .query({
       query: gql`{
@@ -33,10 +34,11 @@ app.get('/', (req, res) =>
 }
 `})
     .then(res => {
-      const data = JSON.stringify(res)
+      const data = JSON.stringify(res, null, 2);
       console.log(data)
-      })
+    })
     .catch(error => console.error(error))
-);
+  res.send('Check your Console for the JSON you requested!')
+});
 
 app.listen(8000, () => console.log(`Example app listening on port 8000!`))
